@@ -1,0 +1,57 @@
+package main
+ 
+import "fmt"
+ 
+ /*
+ 使用迭代变量递增的方法打印菱形下半部分
+ */
+ 
+/*
+先打印一个矩形 ***     *         *     每层*的个数=2x当前层-1
+              ***  >> ***      ***   空格=总层数-当前层
+              ***     *****   *****
+			  ***  level-1        每层*的个数=  level x 3 -(2 x i + level)-1
+			  *** >> ***  >>      空格=当前层
+			  ***    *
+           中间层=总层数-总层数/2
+*/
+ 
+func main() {
+	
+	Level := 8
+                                  //打印菱形上半部分
+	for i := 1; i <= Level; i++ { //i表示层数
+		for k := 1; k <= Level-i; k++ {//在打印?之前打印空格
+			fmt.Print(" ")
+ 
+		}
+		for j := 1; j <= 2*i-1; j++ {//j表示每层?的个数
+			if j == 1 || j == 2*i-1 {
+				fmt.Print("?")
+ 
+			} else {
+				fmt.Print(" ")
+ 
+			}
+		}
+ 
+		fmt.Println() //每打印一层?号后跳出来换行
+ 
+	}
+//打印菱形下半部分
+	for i := 1; i <= Level-1; i++ {
+		for k := 1; k <= i; k++ {
+			fmt.Print(" ")
+		}
+		for j := 1; j <= Level*3-(2*i+Level)-1; j++ {
+			if j == 1 || j == Level*3-(2*i+Level)-1 {
+				fmt.Print("?")
+			} else {
+				fmt.Print(" ")
+			}
+ 
+		}
+		fmt.Println()
+	}
+ 
+}
